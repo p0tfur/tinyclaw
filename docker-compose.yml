@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  tinyclaw:
+    build: .
+    container_name: tinyclaw
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - tinyclaw_data:/data
+    environment:
+      - NODE_ENV=production
+      # - OLLAMA_HOST=http://host.docker.internal:11434 # Odkomentuj, jeśli używasz lokalnego Ollama na hoście
+
+volumes:
+  tinyclaw_data:

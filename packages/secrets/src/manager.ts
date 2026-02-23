@@ -8,6 +8,8 @@
  * Provider API keys follow the naming convention: provider.<name>.apiKey
  */
 
+import { homedir } from 'node:os';
+import { join } from 'node:path';
 import { SecretsEngine } from '@wgtechlabs/secrets-engine';
 import { logger } from '@tinyclaw/logger';
 import { buildProviderKeyName } from '@tinyclaw/types';
@@ -21,8 +23,10 @@ export class SecretsManager implements SecretsManagerInterface {
   }
 
   static async create(config?: SecretsConfig): Promise<SecretsManager> {
-    const options = config?.path ? { path: config.path } : undefined;
-    const engine = await SecretsEngine.open(options);
+    const dataDir = process.env.TINYCLAW_DATA_DIR || join(homedir(), '.tinyclaw');
+    const storagePath = config?.path ?? join(dataDir, 'secrets');
+
+    const engine = await SecretsEngine.open({ path: storagePath });
     logger.debug('Secrets engine opened', { storagePath: engine.storagePath });
     return new SecretsManager(engine);
   }

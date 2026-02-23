@@ -55,6 +55,7 @@
   let setupBackupCodes = $state([])
   let setupRecoveryToken = $state('')
   let setupRestarting = $state(false)
+  let confirmedSavedCodes = $state(false) // must check before proceeding past backup codes
   let totpCode = $state('')
   let loginError = $state('')
   let loginLoading = $state(false)
@@ -1597,9 +1598,21 @@
             ⬇ Download recovery credentials
           </button>
 
+          <!-- Confirmation checkbox — must be checked before proceeding -->
+          <label class="flex items-start gap-3 cursor-pointer py-2 px-1 rounded-lg hover:bg-bg-secondary transition-colors">
+            <input
+              type="checkbox"
+              bind:checked={confirmedSavedCodes}
+              class="mt-0.5 shrink-0 accent-brand w-4 h-4 cursor-pointer"
+            />
+            <span class="text-sm text-text-muted select-none">
+              I have saved my recovery token and backup codes in a secure location
+            </span>
+          </label>
+
           <button
             onclick={finishSetupAndEnter}
-            disabled={setupRestarting}
+            disabled={setupRestarting || !confirmedSavedCodes}
             class="w-full px-5 py-3 bg-brand text-white rounded-lg font-medium text-sm transition-colors hover:bg-brand/80 disabled:opacity-40 disabled:cursor-not-allowed"
           >
             I stored my recovery token and backup codes

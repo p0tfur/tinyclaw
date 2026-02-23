@@ -10,13 +10,15 @@
       "devDependencies": {
         "@types/bun": "latest",
         "@types/node": "^22.10.0",
+        "@wgtechlabs/config-engine": "^0.1.0",
+        "@wgtechlabs/secrets-engine": "^2.0.0",
         "husky": "^9.1.7",
         "typescript": "^5.7.0",
       },
     },
     "packages/compactor": {
       "name": "@tinyclaw/compactor",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "dependencies": {
         "@tinyclaw/logger": "workspace:*",
         "@tinyclaw/types": "workspace:*",
@@ -28,7 +30,7 @@
     },
     "packages/config": {
       "name": "@tinyclaw/config",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "dependencies": {
         "@tinyclaw/core": "workspace:*",
         "@tinyclaw/logger": "workspace:*",
@@ -39,7 +41,7 @@
     },
     "packages/core": {
       "name": "@tinyclaw/core",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "dependencies": {
         "@tinyclaw/delegation": "workspace:*",
         "@tinyclaw/logger": "workspace:*",
@@ -51,7 +53,7 @@
     },
     "packages/delegation": {
       "name": "@tinyclaw/delegation",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "dependencies": {
         "@tinyclaw/logger": "workspace:*",
         "@tinyclaw/router": "workspace:*",
@@ -65,7 +67,7 @@
     },
     "packages/gateway": {
       "name": "@tinyclaw/gateway",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "dependencies": {
         "@tinyclaw/logger": "workspace:*",
         "@tinyclaw/types": "workspace:*",
@@ -73,7 +75,7 @@
     },
     "packages/heartware": {
       "name": "@tinyclaw/heartware",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "dependencies": {
         "@tinyclaw/logger": "workspace:*",
         "@tinyclaw/types": "workspace:*",
@@ -81,29 +83,29 @@
     },
     "packages/intercom": {
       "name": "@tinyclaw/intercom",
-      "version": "1.1.0",
+      "version": "2.0.0",
     },
     "packages/learning": {
       "name": "@tinyclaw/learning",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "dependencies": {
         "@tinyclaw/types": "workspace:*",
       },
     },
     "packages/logger": {
       "name": "@tinyclaw/logger",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "dependencies": {
         "@wgtechlabs/log-engine": "^2.3.0",
       },
     },
     "packages/matcher": {
       "name": "@tinyclaw/matcher",
-      "version": "1.1.0",
+      "version": "2.0.0",
     },
     "packages/memory": {
       "name": "@tinyclaw/memory",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "dependencies": {
         "@tinyclaw/types": "workspace:*",
       },
@@ -113,7 +115,7 @@
     },
     "packages/nudge": {
       "name": "@tinyclaw/nudge",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "dependencies": {
         "@tinyclaw/logger": "workspace:*",
         "@tinyclaw/types": "workspace:*",
@@ -121,7 +123,7 @@
     },
     "packages/plugins": {
       "name": "@tinyclaw/plugins",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "dependencies": {
         "@tinyclaw/logger": "workspace:*",
         "@tinyclaw/types": "workspace:*",
@@ -129,7 +131,7 @@
     },
     "packages/pulse": {
       "name": "@tinyclaw/pulse",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "dependencies": {
         "@tinyclaw/logger": "workspace:*",
         "@tinyclaw/types": "workspace:*",
@@ -137,11 +139,11 @@
     },
     "packages/queue": {
       "name": "@tinyclaw/queue",
-      "version": "1.1.0",
+      "version": "2.0.0",
     },
     "packages/router": {
       "name": "@tinyclaw/router",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "dependencies": {
         "@tinyclaw/logger": "workspace:*",
         "@tinyclaw/types": "workspace:*",
@@ -149,11 +151,11 @@
     },
     "packages/sandbox": {
       "name": "@tinyclaw/sandbox",
-      "version": "1.1.0",
+      "version": "2.0.0",
     },
     "packages/secrets": {
       "name": "@tinyclaw/secrets",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "dependencies": {
         "@tinyclaw/logger": "workspace:*",
         "@tinyclaw/types": "workspace:*",
@@ -162,7 +164,7 @@
     },
     "packages/shell": {
       "name": "@tinyclaw/shell",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "dependencies": {
         "@tinyclaw/logger": "workspace:*",
         "@tinyclaw/types": "workspace:*",
@@ -170,7 +172,7 @@
     },
     "packages/shield": {
       "name": "@tinyclaw/shield",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "dependencies": {
         "@tinyclaw/logger": "workspace:*",
         "@tinyclaw/types": "workspace:*",
@@ -178,11 +180,11 @@
     },
     "packages/types": {
       "name": "@tinyclaw/types",
-      "version": "1.1.0",
+      "version": "2.0.0",
     },
     "plugins/channel/plugin-channel-discord": {
       "name": "@tinyclaw/plugin-channel-discord",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "dependencies": {
         "@tinyclaw/logger": "workspace:*",
         "@tinyclaw/types": "workspace:*",
@@ -191,7 +193,7 @@
     },
     "plugins/channel/plugin-channel-friends": {
       "name": "@tinyclaw/plugin-channel-friends",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "dependencies": {
         "@tinyclaw/logger": "workspace:*",
         "@tinyclaw/types": "workspace:*",
@@ -199,7 +201,7 @@
     },
     "plugins/provider/plugin-provider-openai": {
       "name": "@tinyclaw/plugin-provider-openai",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "dependencies": {
         "@tinyclaw/logger": "workspace:*",
         "@tinyclaw/types": "workspace:*",
@@ -207,7 +209,7 @@
     },
     "src/cli": {
       "name": "tinyclaw",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "bin": {
         "tinyclaw": "./dist/index.js",
       },
@@ -245,7 +247,7 @@
     },
     "src/landing": {
       "name": "@tinyclaw/landing",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "dependencies": {
         "svelte": "^5.20.1",
       },
@@ -258,7 +260,7 @@
     },
     "src/web": {
       "name": "@tinyclaw/web",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "dependencies": {
         "@tinyclaw/core": "workspace:*",
         "@tinyclaw/heartware": "workspace:*",

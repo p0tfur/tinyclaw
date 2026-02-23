@@ -2,7 +2,7 @@ services:
   tinyclaw:
     build: .
     container_name: tinyclaw
-    command: start
+    command: [ "setup", "--web" ]
     restart: unless-stopped
     ports:
       - "3000:3000"

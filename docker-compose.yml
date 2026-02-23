@@ -1,9 +1,8 @@
-version: '3.8'
-
 services:
   tinyclaw:
     build: .
     container_name: tinyclaw
+    command: start
     restart: unless-stopped
     ports:
       - "3000:3000"

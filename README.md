@@ -24,7 +24,7 @@ To run this fixed version, simply clone the repository onto your server (e.g., D
 docker compose up -d --build --force-recreate
 ```
 
-*Then access your server's address with port `3000` (or via Tailscale, e.g., `https://veles.tail0bd429.ts.net/setup`), to finish the configuration.*
+*Then access your server's address with port `3000` (or via Tailscale, e.g., `https://xxx.tailxxx.ts.net/setup`), to finish the configuration.*
 
 ---
 
@@ -49,7 +49,7 @@ Aby uruchomić tę poprawioną wersję po prostu sklonuj repozytorium na swój s
 docker compose up -d --build --force-recreate
 ```
 
-*Następnie wejdź na adres swojego serwera z portem `3000` (albo przez Tailscale itp. np. `https://veles.tail0bd429.ts.net/setup`), by dokończyć konfigurację.*
+*Następnie wejdź na adres swojego serwera z portem `3000` (albo przez Tailscale itp. np. `https://xxx.tailxxx.ts.net/setup`), by dokończyć konfigurację.*
 
 ---
 

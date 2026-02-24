@@ -202,7 +202,7 @@ export const CONFIG_DEFAULTS: Partial<TinyClawConfigData> = {
     name: 'Tiny Claw',
   },
   plugins: {
-    enabled: [],
+    enabled: ['@tinyclaw/plugin-channel-discord'],
   },
   routing: {
     tierMapping: {

@@ -102,7 +102,32 @@ export async function setupWebCommand(): Promise<void> {
   const dataDir = process.env.TINYCLAW_DATA_DIR || join(homedir(), '.tinyclaw');
   logger.info('Data directory:', { dataDir }, { emoji: '\ud83d\udcc2' });
 
-  const secretsManager = await SecretsManager.create();
+  let secretsManager: SecretsManager;
+  try {
+    secretsManager = await SecretsManager.create();
+  } catch (err: unknown) {
+    if (
+      err instanceof Error &&
+      'code' in err &&
+      (err as { code: string }).code === 'INTEGRITY_ERROR'
+    ) {
+      const dataDir = process.env.TINYCLAW_DATA_DIR || join(homedir(), '.tinyclaw');
+      const storePath = join(dataDir, 'secrets');
+      console.log();
+      console.log(theme.error('  ✖ Secrets store integrity check failed.'));
+      console.log();
+      console.log('    The secrets store may have been corrupted or tampered with.');
+      console.log('    This can happen due to disk errors, power loss, or external changes.');
+      console.log();
+      console.log('    To resolve, delete the store and re-run setup:');
+      console.log();
+      console.log(`      1. ${theme.cmd(`rm -rf ${storePath}`)}`);
+      console.log(`      2. ${theme.cmd('tinyclaw setup')}`);
+      console.log();
+      process.exit(1);
+    }
+    throw err;
+  }
   logger.info('Secrets engine initialized', {
     storagePath: secretsManager.storagePath,
   }, { emoji: '\u2705' });
@@ -185,7 +210,32 @@ export async function setupCommand(): Promise<void> {
 
   showBanner();
 
-  const secretsManager = await SecretsManager.create();
+  let secretsManager: SecretsManager;
+  try {
+    secretsManager = await SecretsManager.create();
+  } catch (err: unknown) {
+    if (
+      err instanceof Error &&
+      'code' in err &&
+      (err as { code: string }).code === 'INTEGRITY_ERROR'
+    ) {
+      const dataDir = process.env.TINYCLAW_DATA_DIR || join(homedir(), '.tinyclaw');
+      const storePath = join(dataDir, 'secrets');
+      console.log();
+      console.log(theme.error('  ✖ Secrets store integrity check failed.'));
+      console.log();
+      console.log('    The secrets store may have been corrupted or tampered with.');
+      console.log('    This can happen due to disk errors, power loss, or external changes.');
+      console.log();
+      console.log('    To resolve, delete the store and re-run setup:');
+      console.log();
+      console.log(`      1. ${theme.cmd(`rm -rf ${storePath}`)}`);
+      console.log(`      2. ${theme.cmd('tinyclaw setup')}`);
+      console.log();
+      process.exit(1);
+    }
+    throw err;
+  }
   const configManager = await ConfigManager.create();
 
   p.intro(theme.brand('Let\'s set up Tiny Claw'));

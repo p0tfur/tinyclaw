@@ -48,7 +48,7 @@ WORKDIR /app
 
 # Create non-root user for security (Trivy DS002)
 RUN groupadd --gid 1001 tinyclaw && \
-    useradd --uid 1001 --gid tinyclaw --shell /bin/sh tinyclaw
+  useradd --uid 1001 --gid tinyclaw --shell /bin/sh tinyclaw
 
 # Copy everything needed at runtime
 COPY --from=builder --chown=tinyclaw:tinyclaw /app/package.json ./
@@ -79,3 +79,4 @@ ENV NODE_ENV=production
 STOPSIGNAL SIGINT
 
 ENTRYPOINT ["bun", "run", "start"]
+CMD ["start"]

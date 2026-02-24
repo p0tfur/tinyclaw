@@ -96,7 +96,8 @@ export async function startCommand(): Promise<void> {
       'code' in err &&
       (err as { code: string }).code === 'INTEGRITY_ERROR'
     ) {
-      const storePath = join(homedir(), '.secrets-engine');
+      const dataDir = process.env.TINYCLAW_DATA_DIR || join(homedir(), '.tinyclaw');
+      const storePath = join(dataDir, 'secrets');
 
       console.log();
       console.log(theme.error('  ✖ Secrets store integrity check failed.'));

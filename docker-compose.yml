@@ -2,7 +2,7 @@ services:
   tinyclaw:
     build: .
     container_name: tinyclaw
-    command: [ "setup", "--web" ]
+    # command: [ "setup", "--web" ] uncomment it for first launch!
     restart: unless-stopped
     ports:
       - "3000:3000"

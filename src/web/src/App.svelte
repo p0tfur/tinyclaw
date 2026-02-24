@@ -127,13 +127,14 @@
   }
 
   function downloadCredentials(recoveryToken, backupCodes) {
+    const formattedToken = (recoveryToken.match(/.{1,40}/g) || [recoveryToken]).join('\n')
     const lines = [
       'Tiny Claw — Recovery Credentials',
       '=================================',
       '',
       'RECOVERY TOKEN',
       '──────────────',
-      recoveryToken,
+      ...formattedToken.split('\n'),
       '',
       'BACKUP CODES',
       '────────────',
@@ -159,7 +160,7 @@
   // Owner dashboard is the default authenticated view
   let view = $derived(
     !authChecked ? 'loading'
-    : !ownerClaimed ? 'setup'
+    : (!ownerClaimed || setupPhase === 'backup-codes') ? 'setup'
     : wantsRecovery ? 'recovery'
     : wantsLogin ? 'login'
     : showHatching ? 'hatching'
@@ -646,6 +647,7 @@
     try {
       await checkAuth()
       if (ownerClaimed && isOwner) {
+        setupPhase = 'done'
         enterHatching()
         return
       }
@@ -672,6 +674,7 @@
             // Server is back — show hatching or go to login
             setupRestarting = false
             if (isOwner) {
+              setupPhase = 'done'
               enterHatching()
             } else {
               // Session lost during restart — go to login
@@ -1561,7 +1564,7 @@
           <div class="flex items-center justify-between mb-2">
             <p class="text-xs text-brand font-semibold uppercase tracking-wider">Recovery Token</p>
             <button
-              onclick={() => copyToClipboard(setupRecoveryToken, v => copiedRecoveryToken = v)}
+              onclick={() => copyToClipboard((setupRecoveryToken.match(/.{1,40}/g) || [setupRecoveryToken]).join('\n'), v => copiedRecoveryToken = v)}
               class="text-xs px-2 py-1 rounded transition-colors {copiedRecoveryToken ? 'bg-green/20 text-green' : 'bg-bg-primary text-text-muted hover:text-text-normal hover:bg-bg-modifier-active'}"
             >
               {copiedRecoveryToken ? '✓ Copied' : 'Copy'}
@@ -1771,7 +1774,7 @@
           <div class="flex items-center justify-between mb-2">
             <p class="text-xs text-brand font-semibold uppercase tracking-wider">Recovery Token</p>
             <button
-              onclick={() => copyToClipboard(reenrollRecoveryToken, v => copiedReenrollRecoveryToken = v)}
+              onclick={() => copyToClipboard((reenrollRecoveryToken.match(/.{1,40}/g) || [reenrollRecoveryToken]).join('\n'), v => copiedReenrollRecoveryToken = v)}
               class="text-xs px-2 py-1 rounded transition-colors {copiedReenrollRecoveryToken ? 'bg-green/20 text-green' : 'bg-bg-primary text-text-muted hover:text-text-normal hover:bg-bg-modifier-active'}"
             >
               {copiedReenrollRecoveryToken ? '✓ Copied' : 'Copy'}
